@@ -5399,6 +5399,40 @@ static const struct panel_desc_dsi tc358764_ltl101a106 = {
 	.lanes = 4,
 };
 
+static const struct drm_display_mode oppo15399tm_nt35521s_mode = {
+	.clock = (720 + 240 + 8 + 230) * (1280 + 26 + 8 + 26) * 60 / 1000,
+	.hdisplay = 720,
+	.hsync_start = 720 + 240,
+	.hsync_end = 720 + 240 + 8,
+	.htotal = 720 + 240 + 8 + 230,
+	.vdisplay = 1280,
+	.vsync_start = 1280 + 26,
+	.vsync_end = 1280 + 26 + 8,
+	.vtotal = 1280 + 26 + 8 + 26,
+	.width_mm = 62,
+	.height_mm = 110,
+	.type = DRM_MODE_TYPE_DRIVER,
+};
+
+static const struct panel_desc_dsi oppo15399tm_nt35521s = {
+	.desc = {
+		.modes = &oppo15399tm_nt35521s_mode,
+		.num_modes = 1,
+		.bpc = 8,
+		.size = {
+			.width = 62,
+			.height = 110,
+		},
+		.connector_type = DRM_MODE_CONNECTOR_DSI,
+	},
+	.flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+		 MIPI_DSI_MODE_VIDEO_HSE | MIPI_DSI_CLOCK_NON_CONTINUOUS |
+		 MIPI_DSI_MODE_VIDEO_NO_HFP | MIPI_DSI_MODE_VIDEO_NO_HBP |
+		 MIPI_DSI_MODE_VIDEO_NO_HSA,
+	.format = MIPI_DSI_FMT_RGB888,
+	.lanes = 3,
+};
+
 static const struct of_device_id dsi_of_match[] = {
 	{
 		.compatible = "auo,b080uan01",
@@ -5430,6 +5464,9 @@ static const struct of_device_id dsi_of_match[] = {
 	}, {
 		.compatible = "samsung,tc358764-ltl101al06-simple",
 		.data = &tc358764_ltl101a106
+	}, {
+		.compatible = "oppo,oppo15399tm-nt35521s-simple",
+		.data = &oppo15399tm_nt35521s
 	}, {
 		/* sentinel */
 	}
